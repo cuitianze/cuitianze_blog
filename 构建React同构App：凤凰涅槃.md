@@ -7,5 +7,21 @@
 #### IMPORTANT:
 这是一个真实的应用，所以我们在不断更新。我们的目标是在有限的时间内开发出能够上线的产品，所以我们没有时间去探索最佳策略，我们只用适合我们场景的。   
 #### 前言
-略... 名词之争不必细谈 "Isomorphic JavaScript" && "Universal JavaScript"，简言之，一套代码穿梭于浏览器和服务器之巅。*当之无愧“JavaScript是宇宙间最好的编程语言”。*      
+名词之争略... 不必细谈 "Isomorphic JavaScript" && "Universal JavaScript"，简言之，一套代码穿梭于浏览器和服务器之巅。*当之无愧“JavaScript是宇宙间最好的编程语言”。*   
+人们怎么看待同构App？你可以在网上找到这张图。
+![](http://blog.koorchik.com/isomorphic-react/isomorphic_separated.png)
+但事实情况应该是这样的：
+![](http://blog.koorchik.com/isomorphic-react/isomorphic_joined.png)
+你的代码中至少有90%应该是被复用的，在大型应用中甚至能超过95%。
+如果你想从头开发一个同构App，那可以阅读这篇教程“[Handcrafting an Isomorphic Redux Application (With Love)](https://medium.com/@bananaoomarang/handcrafting-an-isomorphic-redux-application-with-love-40ada4468af4)”，相当不错。   
+#### 关于App   
+产品广告略... 常规SPA（单页应用）和同构SPA的最本质区别是能同时处理多个请求。因此你需要以某种方式去解决用户依赖的全局state(比如flux或其变体处理存储state)    
+简述产品的几个核心需求：   
+1、内容开放用户，无需验证；   
+2、能够被搜索引擎索引；    
+3、具备社交分享功能；    
+4、支持不同语言；    
+5、一个字：快      
+
+
 ~未完待续~ 
