@@ -22,6 +22,48 @@
 3、具备社交分享功能；    
 4、支持不同语言；    
 5、一个字：快      
+此案例中，会介绍同构应用最简单和最合适的解决方案。
+#### 应用中的哪些块应该被同构？
+1、视图    
+2、样式    
+3、路由
+4、数据获取    
+5、配置    
+6、本地化    
+让我们开始展开吧。
+#### 同构视图
+这是最简单的部分。说它简单，是因为Facebook的工程师已经在ReactJS库中解决了这一问题。我们唯一要做的事情就是引入ReactJS库，根据文档去使用它。     
+客户端代码：
+```
+import ReactDOM from 'react-dom';
+import App      from './App';
 
+ReactDOM.render(
+    <App />,
+    document.getElementById('react-view')
+);
+```
+服务端代码：
+```
+import ReactDOM from 'react-dom/server';
+import App      from './App';
 
+const componentHTML = ReactDOM.renderToString(
+    <App />
+);
+
+const html = `
+    <html>
+        <head>
+            <title>Quiz Wall</title>
+        </head>
+        <body>
+            <div id="react-view">${componentHTML}</div>
+        </body>
+    </html>
+`;
+
+res.end(html)
+```
+正如你所见，我们只需用`ReactDOM.renderToString`替换`ReactDOM.render`即可。没什么复杂的，你可以在任何教程中看到。
 ~未完待续~ 
