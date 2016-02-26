@@ -91,4 +91,21 @@ export default class Footer extends React.Component {
 }
 ```
 这样的方法使我们的代码更加模块化。此外，如果我们组件，它会自动引入它的依赖（js库，样式，及其他资源）。Webpack负责处理所有的文件类型。    
+这个方法在webpack的帮助下工作良好，但是在纯nodejs下它并不能运行，因为你无法`import`一个“less”的文件。因此我开始寻找一个新的解决方案。    
+第一个可能方案是[require.extensions](https://nodejs.org/api/globals.html#globals_require_extensions),但是有这样几个问题：   
+1、稳定度仍然是0    
+2、状态：“不赞成使用”      
+3、与babel-node不兼容。我也不知道为什么，需要更多的调研。     
+所以我又开始寻找别的解决方案。最简单的方案就是使用内联样式。     
+#### 内联样式
+我决定尝试内联样式是因为：   
+1、内联样式在服务端引入不成问题。他们可以被保存在json文件中。    
+2、[React支持内联样式](https://facebook.github.io/react/tips/inline-styles.html)    
+3、内联样式不需要hack就解决了大量的CSS问题。[React: CSS in JS by vjeux](https://speakerdeck.com/vjeux/react-css-in-js)      
+在使用过程中，我遇到了这样几个问题：      
+1、你需要利用JS来模拟伪类，比如：`:hover, :active, :focus`      
+2、你需要自己去处理浏览器引擎前缀      
+3、你需要利用JS去模拟媒体查询      
+4、你需要通过某种方式来合并样式（css中通常你只需要几个class名）    
+我发现一个非常棒的工具[`Radium`](http://projects.formidablelabs.com/radium/)来处理内联样式。它能帮助你在开发单页应用时解决上述所有问题。     
 ~未完待续~ 
