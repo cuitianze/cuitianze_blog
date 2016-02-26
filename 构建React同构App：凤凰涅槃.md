@@ -108,4 +108,8 @@ export default class Footer extends React.Component {
 3、你需要利用JS去模拟媒体查询      
 4、你需要通过某种方式来合并样式（css中通常你只需要几个class名）    
 我发现一个非常棒的工具[`Radium`](http://projects.formidablelabs.com/radium/)来处理内联样式。它能帮助你在开发单页应用时解决上述所有问题。     
+#### 根据浏览器DOM自动添加引擎前缀
+我们切换到`Radium`上来了，但是在同构模式下运行代码时收到了奇怪的警告。       
+![](http://blog.koorchik.com/isomorphic-react/markup-error.png)    
+
 ~未完待续~ 
