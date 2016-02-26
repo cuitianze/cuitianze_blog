@@ -65,5 +65,30 @@ const html = `
 
 res.end(html)
 ```
-正如你所见，我们只需用`ReactDOM.renderToString`替换`ReactDOM.render`即可。没什么复杂的，你可以在任何教程中看到。
+正如你所见，我们只需用`ReactDOM.renderToString`替换`ReactDOM.render`即可。没什么复杂的，你可以在任何教程中看到。    
+#### 同构样式
+大部分教程都会忽略这部分，这是你在开发过程中会遇到的第一个棘手问题。      
+* 痛点1 样式如何导入  
+我们使用webpack，通常我们在组件中导入组件指定样式。举个例子，如果我们有一个组件名叫“Footer.jsx”，那么在同级目录中会有一个诸如“Footer.less”的样式文件，并且“Footer.jsx”引入“Footer.less”。组件是一个以“Footer”为类名的类，所有的样式会以这个类作为命名空间。      
+这是一个小例子：
+```
+import React from 'react';
+import './Footer.less';
+
+export default class Footer extends React.Component {
+    render() {
+        return (
+            <div className='Footer'>
+                <small>
+                    Developed by
+                    <a href='http://webbylab.com' target='_blank'>
+                        WebbyLab
+                    </a>
+                </small>
+            </div>
+        );
+    }
+}
+```
+这样的方法使我们的代码更加模块化。此外，如果我们组件，它会自动引入它的依赖（js库，样式，及其他资源）。Webpack负责处理所有的文件类型。    
 ~未完待续~ 
